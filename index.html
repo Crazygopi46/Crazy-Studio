@@ -410,3 +410,30 @@ footer{
   font-size:14px;
 }
 </style>
+<script>
+document.addEventListener("scroll", () => {
+  document.querySelectorAll("section").forEach(sec => {
+    let pos = sec.getBoundingClientRect().top;
+    let screen = window.innerHeight;
+
+    if(pos < screen - 100){
+      sec.style.opacity = 1;
+      sec.style.transform = "translateY(0)";
+      sec.style.transition = "1s ease";
+    } else {
+      sec.style.opacity = 0;
+      sec.style.transform = "translateY(50px)";
+    }
+  });
+});
+</script>
+<div class="cursor"></div>
+
+<script>
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", e => {
+  cursor.style.left = e.pageX + "px";
+  cursor.style.top = e.pageY + "px";
+});
+</script>
